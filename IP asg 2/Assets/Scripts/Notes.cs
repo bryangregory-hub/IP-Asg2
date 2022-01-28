@@ -15,6 +15,6 @@ public class Notes : MonoBehaviour
             Mathf.RoundToInt(this.transform.position.z)
             ) ;
         this.transform.position = position;
-
+        this.transform.rotation = Quaternion.identity;
     }
 }
