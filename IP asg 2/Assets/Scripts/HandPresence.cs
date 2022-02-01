@@ -12,7 +12,8 @@ public class HandPresence : MonoBehaviour
     private InputDevice targetDevice;
     private GameObject spawnedController;
     private GameObject spawnedHandModel;
-    private bool calledOnce = false;
+    //private bool calledOnce = false;
+    private Animator handAnimate;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,41 +34,55 @@ public class HandPresence : MonoBehaviour
             targetDevice = devices[0];
 
             spawnedHandModel = Instantiate(handModelPrefab, transform);
-            calledOnce = true;
+            handAnimate = spawnedHandModel.GetComponent<Animator>();
         }
     }
-    void FixedUpdate()
+    void UpdateHandAnimation()
     {
-        
-            
-        
-        
+        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerVal))
+        {
+           
+            handAnimate.SetFloat("Trigger", triggerVal);
+        }
+        else
+        {
+            handAnimate.SetFloat("Trigger", 0);
+        }
+        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripVal))
+        {
+            handAnimate.SetFloat("Grip", gripVal);
+        }
+        else
+        {
+            handAnimate.SetFloat("Grip", 0);
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateHandAnimation();
 
         targetDevice.TryGetFeatureValue(CommonUsages.secondary2DAxisClick, out bool primaryButtonValue);
         if (primaryButtonValue)
         {
             
-            Debug.Log("Pressing Primary Button");
+            //Debug.Log("Pressing Primary Button");
         }
         
         targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
         if (triggerValue > 0.1f)
         {
             
-            Debug.Log("Pressing trigger Button" + triggerValue);
+            //Debug.Log("Pressing trigger Button" + triggerValue);
 
         }
         targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 Primary2D);
         if (Primary2D != Vector2.zero)
         {
             
-            Debug.Log("Pressing TouchPad" + Primary2D);
+            //Debug.Log("Pressing TouchPad" + Primary2D);
 
         }
 
