@@ -46,6 +46,7 @@ public class HandPresence : MonoBehaviour
         }
         else
         {
+            
             handAnimate.SetFloat("Trigger", 0);
         }
         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripVal))
