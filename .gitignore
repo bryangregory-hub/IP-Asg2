@@ -9,6 +9,7 @@
 /IP asg 2/[Bb]uilds/
 /IP asg 2/[Ll]ogs/
 /IP asg 2/[Mm]emoryCaptures/
+/IP asg 2/Assets/Firebase/
  
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
