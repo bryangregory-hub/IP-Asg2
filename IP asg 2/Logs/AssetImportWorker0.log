@@ -281,3 +281,4 @@ Received Import Request.
 Start importing Assets/models/Pipe Organ/Prefab/Top Large.prefab using Guid(d848215b203b93944ab5e2c3339156aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3159a52b45ae516ac84d2e8d172f1f98') in 0.015389 seconds 
   Import took 0.022897 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
