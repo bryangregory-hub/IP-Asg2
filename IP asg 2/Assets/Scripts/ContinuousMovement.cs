@@ -23,7 +23,7 @@ public class ContinuousMovement : MonoBehaviour
     void Update()
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
-        device.TryGetFeatureValue(CommonUsages.secondary2DAxis, out inputAxis);
+        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
     }
     private void FixedUpdate()
     {
