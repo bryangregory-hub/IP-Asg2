@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR;
 public class soundNote : MonoBehaviour
 {
-    public bool NoteActive = false;
+    
+    public bool NoteActive;
     public AudioSource NotePlay;
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,17 @@ public class soundNote : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (NotePlay==true)
+        if (NoteActive == true && tag == "MusicBar")
         {
             NotePlay.Play();
         }
+    }
+    public void TrueeNoteActive()
+    {
+        NoteActive = true;
+    }
+    public void falsifyNoteActive()
+    {
+        NoteActive = false;
     }
 }
