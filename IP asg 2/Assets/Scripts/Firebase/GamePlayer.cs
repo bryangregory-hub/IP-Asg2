@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
     
-public class GamePlayer
+public class GamePlayer;
 {
     //properties of gameplayer
     public string userName;
@@ -15,7 +15,7 @@ public class GamePlayer
     public long createdOn;
     public long updatedOn;
 
-    public GamePlayer()
+public GamePlayer()
     {
 
     }
