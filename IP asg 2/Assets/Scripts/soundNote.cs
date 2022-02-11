@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+
 public class soundNote : MonoBehaviour
 {
     
@@ -18,10 +18,16 @@ public class soundNote : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider other)
     {
-        if (NoteActive == true && tag == "MusicBar")
+        if (other.gameObject.tag=="MusicBar")
         {
+            print("wadad");
+        }
+        
+        if (NoteActive == true && other.gameObject.tag == "MusicBar")
+        {
+            print("wadad");
             NotePlay.Play();
         }
     }
