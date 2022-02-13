@@ -20,7 +20,7 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField passwordInput;
 
 
-    public TextMeshProUGUI displayName;
+    //public TextMeshProUGUI displayName;
     public TextMeshProUGUI errorMeshContent;
 
     //Buttons
@@ -102,7 +102,6 @@ public class AuthManager : MonoBehaviour
             {
 
                 string username = nameInput.text.Trim();
-                //await CreateNewPlayer(newUser.UserId, username, username, newUser.Email);
                 SceneManager.LoadScene(1);
             }
         }
@@ -146,7 +145,7 @@ public class AuthManager : MonoBehaviour
 
             else if (task.IsCompleted)
             {
-                //errorMeshContent.gameObject.SetActive(false);
+                errorMeshContent.gameObject.SetActive(false);
                 // Firebase user has been created.
                 newUser = task.Result;
                 Debug.LogFormat("Account created successfully: {0} {1}", newUser.Email, newUser.UserId);
@@ -156,20 +155,11 @@ public class AuthManager : MonoBehaviour
         return newUser;
     }
 
-    /*
-    public async Task CreateNewPlayer(string uuid, string displayName, string userName, string email)
-    {
-        GamePlayer newUser = new GamePlayer(displayName, userName, email);
-        Debug.LogFormat("Player Details: {0}", newUser.PrintPlayer());
-        await dbReference.Child("players/" + uuid).SetRawJsonValueAsync(newUser.GamePlayerToJson());
-    }*/
-
-
-    public string GetCurrentUserDisplayName()
+    /*public string GetCurrentUserDisplayName()
     {
         return auth.CurrentUser.DisplayName;
     }
-
+    */
     public FirebaseUser GetCurrentUser()
     {
         return auth.CurrentUser;
@@ -188,7 +178,7 @@ public class AuthManager : MonoBehaviour
             auth.SignOut();
             if (currentSceneIndex !=2)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(0);
             }
         }
     }
@@ -249,7 +239,7 @@ public class AuthManager : MonoBehaviour
         return isValid;
     }
 
-    public bool ValidateUsername(string username)
+    /*public bool ValidateUsername(string username)
     {
         bool isValid = false;
         //Regex only contains letters,underscores and dots
@@ -262,7 +252,7 @@ public class AuthManager : MonoBehaviour
 
         return isValid;
     }
-
+    */
     public string HandleSignUpError(Task<FirebaseUser> task)
     {
         string errorMsg = "";
