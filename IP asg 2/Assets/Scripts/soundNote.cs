@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class soundNote : MonoBehaviour
 {
     
     public bool NoteActive;
     public AudioSource NotePlay;
+
+    public ColorChanger _CC;
+    public XRBaseInteractor ChangeMaterial;
+    public Material ColorBlind;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +22,12 @@ public class soundNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_CC.ColorBlind==true)
+        {
+            print("omg it works");
+            ChangeMaterial = GetComponent<XRBaseInteractor>();
+            
+        }
     }
      void OnTriggerEnter(Collider other)
     {
