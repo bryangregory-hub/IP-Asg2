@@ -827,7 +827,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515929021}
         m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
         m_MethodName: ForgetPassword
         m_Mode: 1
@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515929021}
         m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
         m_MethodName: SignUpNewUser
         m_Mode: 1
@@ -3093,6 +3093,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507255137}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1515929020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1515929022}
+  - component: {fileID: 1515929021}
+  m_Layer: 0
+  m_Name: AuthManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1515929021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515929020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e0f934ee88e2e43b035d809a0e79dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emailInput: {fileID: 1780024713}
+  nameInput: {fileID: 60031258}
+  passwordInput: {fileID: 60031258}
+  errorMeshContent: {fileID: 1785217179}
+  signUpBtn: {fileID: 1455076668}
+  signInBtn: {fileID: 2000469465}
+  forgetPasswordBtn: {fileID: 622478293}
+  signOutBtn: {fileID: 0}
+--- !u!4 &1515929022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515929020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 113.581955, y: 153.8057, z: 264.35382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535644148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4226,7 +4277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1515929021}
         m_TargetAssemblyTypeName: AuthManager, Assembly-CSharp
         m_MethodName: SignInUser
         m_Mode: 1
