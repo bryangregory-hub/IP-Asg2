@@ -10,7 +10,7 @@ public class ButtonInt : MonoBehaviour
         ColorChange,
         PlaySound
     }
-    ButtonType buttonType;
+    public ButtonType buttonType;
     
 
     private MeshRenderer meshRenderer = null;
@@ -27,7 +27,17 @@ public class ButtonInt : MonoBehaviour
     private bool _ColorCheck = false;
 
     [Header("Play Sound Settings")]
+    private bool Play = false;
+    private bool _playCheck = true;
     private bool _PlaySoundCheck = false;
+    public float musicSpeed;
+    public GameObject musicBar;
+    public Animator anim;
+
+    public void Start()
+    {
+       
+    }
     public void Update()
     {
         switch(buttonType)
@@ -39,6 +49,11 @@ public class ButtonInt : MonoBehaviour
                 _ColorCheck = true;
                 break;
         }
+        if (anim.GetBool("pB") == true) 
+        {
+
+        }
+        
     }
 
     private void Awake()
@@ -77,6 +92,20 @@ public class ButtonInt : MonoBehaviour
             ColorBlind = true;
             _tColor.text = "Color Blind Mode - Yellow";
         }
+        if (_PlaySoundCheck == true && _playCheck == true)
+        {
+            print("wdawdawdawd");
+            anim.SetTrigger("check");
+            
+           
+            _playCheck = false;
+        }
+        else if (_PlaySoundCheck == true && _playCheck == false)
+        {
+            anim.SetTrigger("check");
+            _playCheck = true;
+        }
+
     }
 
     private void SetOriginalMaterial(XRBaseInteractor interactor)
