@@ -62,14 +62,14 @@ public class ButtonInt : MonoBehaviour
         originalMaterial = meshRenderer.material;
 
         interactable = GetComponent<XRBaseInteractable>();
-        interactable.onHoverEnter.AddListener(SetSelectMaterial);
-        interactable.onHoverExit.AddListener(SetOriginalMaterial);
+        interactable.onHoverEntered.AddListener(SetSelectMaterial);
+        interactable.onHoverExited.AddListener(SetOriginalMaterial);
     }
 
     private void OnDestroy()
     {
-        interactable.onHoverEnter.RemoveListener(SetSelectMaterial);
-        interactable.onHoverExit.RemoveListener(SetOriginalMaterial);
+        interactable.onHoverEntered.RemoveListener(SetSelectMaterial);
+        interactable.onHoverExited.RemoveListener(SetOriginalMaterial);
     }
 
     private void SetSelectMaterial(XRBaseInteractor interactor)
