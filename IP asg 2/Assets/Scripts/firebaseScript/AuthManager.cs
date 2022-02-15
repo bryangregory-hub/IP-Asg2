@@ -20,7 +20,7 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField passwordInput;
 
 
-    //public TextMeshProUGUI displayName;
+    public TextMeshProUGUI displayName;
     public TextMeshProUGUI errorMeshContent;
 
     //Buttons
@@ -155,11 +155,11 @@ public class AuthManager : MonoBehaviour
         return newUser;
     }
 
-    /*public string GetCurrentUserDisplayName()
+    public string GetCurrentUserDisplayName()
     {
         return auth.CurrentUser.DisplayName;
     }
-    */
+    
     public FirebaseUser GetCurrentUser()
     {
         return auth.CurrentUser;
