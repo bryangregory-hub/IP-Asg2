@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class HandButton : XRBaseInteractable
+public class HandButton1 : XRBaseInteractable
 {
    
 }
