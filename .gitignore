@@ -60,7 +60,3 @@ sysinfo.txt
 crashlytics-build.properties
 *.log
 *.log
-<<<<<<< Updated upstream
-=======
-*.log
->>>>>>> Stashed changes
