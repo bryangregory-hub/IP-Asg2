@@ -14,6 +14,14 @@ public class HandPresence : MonoBehaviour
     private GameObject spawnedHandModel;
     //private bool calledOnce = false;
     private Animator handAnimate;
+
+    public GameObject lefthand_musicNote;
+    public GameObject righthand_musicNote;
+
+    public GameObject lefthand_interact;
+    public GameObject righthand_interact;
+
+    private bool _musicNoteActive=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,25 +76,40 @@ public class HandPresence : MonoBehaviour
         targetDevice.TryGetFeatureValue(CommonUsages.secondary2DAxisClick, out bool primaryButtonValue);
         if (primaryButtonValue)
         {
-            
-            //Debug.Log("Pressing Primary Button");
-        }
-        
-        targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-        if (triggerValue > 0.1f)
-        {
-            
-            //Debug.Log("Pressing trigger Button" + triggerValue);
+            if (_musicNoteActive == false)
+            {
+                lefthand_musicNote.gameObject.SetActive(true);
+                righthand_musicNote.gameObject.SetActive(true);
+
+
+                _musicNoteActive = true;
+            }
+            else if (_musicNoteActive == true)
+            {
+                lefthand_musicNote.gameObject.SetActive(false);
+                righthand_musicNote.gameObject.SetActive(false);
+
+
+                _musicNoteActive = false;
+
+                //Debug.Log("Pressing Primary Button");
+            }
+
+            targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
+            if (triggerValue > 0.1f)
+            {
+
+                //Debug.Log("Pressing trigger Button" + triggerValue);
+
+            }
+            targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 Primary2D);
+            if (Primary2D != Vector2.zero)
+            {
+
+                //Debug.Log("Pressing TouchPad" + Primary2D);
+
+            }
 
         }
-        targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 Primary2D);
-        if (Primary2D != Vector2.zero)
-        {
-            
-            //Debug.Log("Pressing TouchPad" + Primary2D);
-
-        }
-
-        
     }
 }
