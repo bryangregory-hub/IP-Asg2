@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "413458008584",
+    "firebase_url": "https://headip-4b043-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "headip-4b043",
+    "storage_bucket": "headip-4b043.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413458008584:android:dcb94d0f1a071b7b091fbd",
+        "android_client_info": {
+          "package_name": "com.IM01.IP5head"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413458008584-igh48qat2lifc6evb9qol52966cvhsnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADaHa34ihiwOXqXPaCXllpj5Vr05xhfo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413458008584-igh48qat2lifc6evb9qol52966cvhsnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
