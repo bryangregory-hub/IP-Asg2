@@ -8,7 +8,8 @@ public class ButtonInt : MonoBehaviour
     public enum ButtonType
     {
         ColorChange,
-        PlaySound
+        PlaySound,
+        book
     }
     public ButtonType buttonType;
     
