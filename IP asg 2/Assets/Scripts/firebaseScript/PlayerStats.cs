@@ -5,38 +5,38 @@ using UnityEngine;
 using Firebase.Database;
 using Firebase.Auth;
 
-//properties of gameplayer and their statistics
 public class PlayerStats
 {
-    public string email;
-    public int score;
-    public int totalAccuracy;
+    public string username;
+    public int highScore;
+    public int accuracy;
+    public long updateOn;
+    public long createdOn;
 
     public PlayerStats()
     { 
 
     }
 
-    //create new constructor for new player to create character, active is true because they have already created the player
-    public PlayerStats(string email, int score, int totalAccuracy)
+    public PlayerStats(string username, int highScore, int accuracy )
     {
-      
-        this.email = email;
-        this.score = score;
-        this.totalAccuracy = totalAccuracy;
-      
+        this.username = username;   
+        this.highScore = highScore;
+        this.accuracy = accuracy;
+
+        var timestamp = this.GetTimeUnix();
+        this.updateOn = timestamp;
+        this.createdOn = timestamp;
     }
 
-    //convert object data to json
+    public long GetTimeUnix()
+    {
+        return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+    }
+
+
     public string PlayerStatsToJson()
     {
         return JsonUtility.ToJson(this);
-    }
-
-    //return player details
-    public string PrintPlayer()
-    {
-        return string.Format(" Email: {0} ",
-             this.email);
     }
 }
