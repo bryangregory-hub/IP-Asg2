@@ -18,7 +18,7 @@ public class FirebaseManager : MonoBehaviour
         
     }
 
-    public void UpdatePlayerStats(string uuid, string username, int score, string displayName, int totalAccuracy)
+    public void UpdatePlayerStats(string uuid, int score, int totalAccuracy)
     {
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
 
@@ -39,7 +39,7 @@ public class FirebaseManager : MonoBehaviour
             {
                 DataSnapshot playerStats = task.Result;
                 //create
-                PlayerStats sp = new PlayerStats(uuid, username, displayName, score, totalAccuracy);
+                PlayerStats sp = new PlayerStats(uuid, score, totalAccuracy);
 
                 //updating multiple values
                 dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.PlayerStatsToJson());
