@@ -21,7 +21,7 @@ public class ButtonInt : MonoBehaviour
     public bool ColorBlind = true;
 
     [Header("Color Blind Settings")]
-    [SerializeField]
+    
     public Material _Cblind;
 
     public TextMeshPro _tColor;
@@ -35,13 +35,17 @@ public class ButtonInt : MonoBehaviour
     public GameObject musicBar;
     public Animator anim;
 
+
+    [Header("Play Sound Settings")]
+    private bool _bookCheck = false;
+    public bool _nextPG=true;
+    private int bookList;
+    public GameObject[] pages;
+    private int _pages;
+
     public void Start()
     {
-       
-    }
-    public void Update()
-    {
-        switch(buttonType)
+        switch (buttonType)
         {
             case ButtonType.PlaySound:
                 _PlaySoundCheck = true;
@@ -49,12 +53,38 @@ public class ButtonInt : MonoBehaviour
             case ButtonType.ColorChange:
                 _ColorCheck = true;
                 break;
+            case ButtonType.book:
+                _bookCheck = true;
+                break;
         }
+        if (_bookCheck ==true)
+        {
+            pages = new GameObject[transform.childCount];
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                pages[i] = transform.GetChild(i).gameObject;
+            }
+            foreach(GameObject go in pages)
+            {
+                go.SetActive(false);
+            }
+            if (pages[0])
+            {
+                pages[0].SetActive(true);
+            }
+        }
+    }
+    
+    public void Update()
+    {
+       
         if (anim.GetBool("pB") == true) 
         {
 
         }
         
+
     }
 
     private void Awake()
@@ -104,8 +134,10 @@ public class ButtonInt : MonoBehaviour
         else if (_PlaySoundCheck == true && _playCheck == false)
         {
             anim.SetTrigger("check");
+            
             _playCheck = true;
         }
+        
 
     }
 
@@ -113,5 +145,15 @@ public class ButtonInt : MonoBehaviour
     {
         
         meshRenderer.material = originalMaterial;
+    }
+    public void CycleBookBack()
+    {
+        pages[_pages].SetActive(false);
+        _pages++;
+        if (_pages<0)
+        {
+            _pages = pages.Length + 1;
+        }
+        pages[_pages].SetActive(true);
     }
 }
