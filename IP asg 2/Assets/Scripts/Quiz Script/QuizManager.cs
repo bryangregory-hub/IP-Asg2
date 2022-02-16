@@ -16,6 +16,7 @@ public class QuizManager : MonoBehaviour
     public TextMeshProUGUI ScoreTxt;
     int totalQuestion = 0;
     public int score;
+    public int questionsAnswered;
 
     public GameObject quizPanel;
     public GameObject GameOverPanel;
@@ -45,14 +46,17 @@ public class QuizManager : MonoBehaviour
     // when players answer the question correctly
     public void Correct()
     {
-        score += 1; 
+        score += 1;
+        questionsAnswered += 1;
         QnA.RemoveAt(currentQuestions);
         generateQuestions();
+
     }
 
     // when players answers the question wrongly
     public void wrong()
     {
+        questionsAnswered += 1;
         QnA.RemoveAt(currentQuestions);
         generateQuestions();
     }
