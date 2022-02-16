@@ -17,4 +17,9 @@ public class spawnner : MonoBehaviour
     {
         
     }
+    public void intCheck()
+    {
+        print("hjvhjgghcvghghvhgvgh");
+        Instantiate(NotePrefeb,transform.position,transform.rotation);
+    }
 }
