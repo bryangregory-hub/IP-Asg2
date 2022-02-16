@@ -12,6 +12,10 @@ public class PlayerStats
     public int accuracy;
     public long updateOn;
     public long createdOn;
+<<<<<<< Updated upstream
+=======
+    public int gamesPlayed;
+>>>>>>> Stashed changes
 
     public PlayerStats()
     { 

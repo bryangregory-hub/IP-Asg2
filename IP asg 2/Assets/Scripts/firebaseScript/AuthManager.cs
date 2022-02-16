@@ -102,7 +102,8 @@ public class AuthManager : MonoBehaviour
             {
 
                 string username = nameInput.text.Trim();
-                SceneManager.LoadScene(1);
+                await CreateNewPlayer(newUser.UserId, username, username, newUser.Email);
+                await UpdatePlayerDisplayName(username);
             }
         }
 
@@ -155,6 +156,44 @@ public class AuthManager : MonoBehaviour
         return newUser;
     }
 
+
+    public async Task CreateNewPlayer(string uuid, string userName, string displayName, string email)
+    {
+        Player newPlayer = new Player(userName, displayName, email);
+        Debug.LogFormat("Player details : {0}", newPlayer.PrintPlayer());
+
+        //root/player/$uuid
+        dbReference.Child("players/" + uuid).SetRawJsonValueAsync(newPlayer.PlayerToJson());
+
+        // Update auth player with new display name -> tagging along username inout field
+        UpdatePlayerDisplayName(displayName);
+    }
+
+    public async Task UpdatePlayerDisplayName(string displayName)
+    {
+        if(auth.CurrentUser != null)
+        {
+            UserProfile profile = new UserProfile
+            {
+                DisplayName = displayName
+            };
+            auth.CurrentUser.UpdateUserProfileAsync(profile).ContinueWithOnMainThread(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("UpdateUserProfileAsync was camcelled");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("UpdateUserProfileAsync encountered an error" + task.Exception);
+                    return;
+                }
+                Debug.Log("User profile updated successfully");
+                Debug.LogFormat("Checking current user display name from auth {0}", GetCurrentUserDisplayName());
+            });
+        }
+    }
     public string GetCurrentUserDisplayName()
     {
         return auth.CurrentUser.DisplayName;
@@ -176,7 +215,7 @@ public class AuthManager : MonoBehaviour
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             auth.SignOut();
-            if (currentSceneIndex !=2)
+            if (currentSceneIndex !=0)
             {
                 SceneManager.LoadScene(0);
             }
