@@ -179,10 +179,11 @@ MonoBehaviour:
   - {fileID: 735610323}
   - {fileID: 602262942}
   - {fileID: 243106235}
-  currentQuestions: 0
+  currentQuestions: 1
   QuestionTxt: {fileID: 601022986}
   ScoreTxt: {fileID: 800507751}
   score: 0
+  questionsAnswered: 0
   quizPanel: {fileID: 1408407728}
   GameOverPanel: {fileID: 1653102573}
 --- !u!4 &104835118
@@ -1511,7 +1512,7 @@ GameObject:
   - component: {fileID: 800507752}
   - component: {fileID: 800507751}
   m_Layer: 0
-  m_Name: Question Text
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
