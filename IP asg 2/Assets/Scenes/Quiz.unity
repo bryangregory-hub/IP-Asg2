@@ -258,7 +258,7 @@ MonoBehaviour:
   - {fileID: 213082505}
   - {fileID: 1797827702}
   - {fileID: 1524827166}
-  currentQuestions: 1
+  currentQuestions: 0
   QuestionTxt: {fileID: 601022986}
   ScoreTxt: {fileID: 800507751}
   score: 0
