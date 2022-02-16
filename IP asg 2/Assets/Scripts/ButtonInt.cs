@@ -38,6 +38,7 @@ public class ButtonInt : MonoBehaviour
 
     [Header("Play Sound Settings")]
     private bool _bookCheck = false;
+    public bool _nextPG=true;
     private int bookList;
     public GameObject[] pages;
     private int _pages;
@@ -145,13 +146,13 @@ public class ButtonInt : MonoBehaviour
         
         meshRenderer.material = originalMaterial;
     }
-    public void cycleBookBack ()
+    public void CycleBookBack()
     {
         pages[_pages].SetActive(false);
-        _pages--;
+        _pages++;
         if (_pages<0)
         {
-            _pages = pages.Length - 1;
+            _pages = pages.Length + 1;
         }
         pages[_pages].SetActive(true);
     }
