@@ -146,13 +146,13 @@ public class ButtonInt : MonoBehaviour
         
         meshRenderer.material = originalMaterial;
     }
-    public void CycleBookBack()
+    public void CycleBook()
     {
         pages[_pages].SetActive(false);
         _pages++;
-        if (_pages<0)
+        if (_pages== pages.Length)
         {
-            _pages = pages.Length + 1;
+            _pages = 0;
         }
         pages[_pages].SetActive(true);
     }
