@@ -20,11 +20,14 @@ public class QuizManager : MonoBehaviour
 
     public GameObject quizPanel;
     public GameObject GameOverPanel;
+    public GameObject StartPanel;
 
     // counting question and generating steps
     private void Start()
     {
         totalQuestion = QnA.Count;
+        StartPanel.SetActive(true);
+        quizPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         generateQuestions();
     }
@@ -32,7 +35,13 @@ public class QuizManager : MonoBehaviour
     // restart the game function
     public void restart()
     {
-        //SceneManager.LoadScene("Quiz");
+        //SceneManager.LoadScene(0);
+    }
+
+    public void StartGame()
+    {
+        StartPanel.SetActive(false);
+        quizPanel.SetActive(true);
     }
 
     // when game ends, lead players to game over scene
@@ -73,7 +82,6 @@ public class QuizManager : MonoBehaviour
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
-
         }
     }
 
