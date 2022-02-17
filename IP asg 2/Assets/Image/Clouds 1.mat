@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Clouds 1
+  m_Shader: {fileID: -6465566751694194690, guid: 2fb1c25caa131ac499c1bb1d7839c012, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_199ac2d203f54334bb46f8a1b9f829a7: 3
+    - Vector1_20fe4ec7786d4fe292f505a012413943: 0.02
+    - Vector1_2a704c64edc34168ab200863b80ca70d: 150
+    - Vector1_8434f8baaf6b4df7b8e19190feefabad: 1
+    m_Colors:
+    - Color_df047eb645cc45d6af132f701ea5594a: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+    - Vector2_38bf5e4b5aae432eb8482f806e7fe19f: {r: 0.002, g: 0.00075, b: 0, a: 0}
+  m_BuildTextureStacks: []
