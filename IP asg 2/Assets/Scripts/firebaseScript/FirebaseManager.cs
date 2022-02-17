@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;  
+using UnityEngine;
+using TMPro;
 using Firebase;
-using Firebase.Database;
+using Firebase.Auth;
 using Firebase.Extensions;
-using System;
+using Firebase.Database;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -45,9 +49,9 @@ public class FirebaseManager : MonoBehaviour
                     sp.updateOn = sp.GetTimeUnix();
 
                     //update leaderboard if new highscore
-                    if (score > sp.highScore)
+                    if (score > sp.score)
                     {
-                        sp.highScore = score;
+                        sp.score = score;
                     }
 
                     //updating all player details
@@ -66,7 +70,7 @@ public class FirebaseManager : MonoBehaviour
     }
 
 
-    /*
+    
     public async Task<PlayerStats> GetPlayerStats(string uuid)
     {
         Query q = dbPlayerStatsReference.Child(uuid);
@@ -97,7 +101,7 @@ public class FirebaseManager : MonoBehaviour
             }
         });
         return playerStats;
-    }*/
+    }
 
     
     public void DeletePlayerStats(string uuid)
