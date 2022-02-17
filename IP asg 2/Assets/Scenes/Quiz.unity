@@ -150,15 +150,15 @@ RectTransform:
   m_GameObject: {fileID: 96153105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2798448, y: 0.2798448, z: 0.2798448}
   m_Children: []
   m_Father: {fileID: 213082506}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.29000092, y: -0.069999695}
+  m_SizeDelta: {x: 365.27, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96153107
 MonoBehaviour:
@@ -182,11 +182,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 88
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 136
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bcf08f083595e4a87a8ca48e35a891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  authMgr: {fileID: 0}
+  firebaseMgr: {fileID: 0}
   QnA:
   - Questions: How long is a half note?
     Answers:
@@ -315,6 +317,10 @@ MonoBehaviour:
   quizPanel: {fileID: 1408407728}
   GameOverPanel: {fileID: 1653102573}
   StartPanel: {fileID: 2072087733}
+  isPlayerStatUpdated: 0
+  username: 
+  correct: 0
+  acc: 0
 --- !u!4 &104835118
 Transform:
   m_ObjectHideFlags: 0
@@ -1860,15 +1866,15 @@ RectTransform:
   m_GameObject: {fileID: 747676994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2798448, y: 0.2798448, z: 0.2798448}
   m_Children: []
   m_Father: {fileID: 1797827703}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.29000092, y: -0.069999695}
+  m_SizeDelta: {x: 365.27, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747676996
 MonoBehaviour:
@@ -1892,11 +1898,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 88
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 88
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2801,15 +2807,15 @@ RectTransform:
   m_GameObject: {fileID: 1073631358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2798448, y: 0.2798448, z: 0.2798448}
   m_Children: []
   m_Father: {fileID: 1191195680}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.29000092, y: -0.069999695}
+  m_SizeDelta: {x: 365.27, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073631360
 MonoBehaviour:
@@ -2833,11 +2839,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 88
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 143
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3221,6 +3227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd448a69b33426a45842888b92cceb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  auth: {fileID: 0}
+  uuid: 
 --- !u!4 &1304511011
 Transform:
   m_ObjectHideFlags: 0
@@ -4539,15 +4547,15 @@ RectTransform:
   m_GameObject: {fileID: 1930771716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2798448, y: 0.2798448, z: 0.2798448}
   m_Children: []
   m_Father: {fileID: 1524827167}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.29000092, y: -0.069999695}
+  m_SizeDelta: {x: 365.27, y: 44.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1930771718
 MonoBehaviour:
@@ -4571,11 +4579,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 88
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 8
+    m_MaxSize: 88
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
