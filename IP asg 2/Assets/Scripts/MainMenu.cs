@@ -29,13 +29,22 @@ public class MainMenu : MonoBehaviour
     // brings users to start playing with the AR Camera
     public void PlayGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Main scene");
 
 
+    }
+    
+    public void Quiz()
+    {
+        SceneManager.LoadScene("Quiz");
     }
         // Quits the player from the application
     public void Quit()
     {
         Application.Quit();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Quiz();
     }
 }
