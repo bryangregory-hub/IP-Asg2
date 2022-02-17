@@ -11,15 +11,12 @@ public class MainMenu : MonoBehaviour
 
     public AuthManager auth;
     public GameObject signOut;
-    public GameObject dataButtons;
-    public GameObject menuButtons;
 
     public TextMeshProUGUI displayName;
 
     public void Awake()
     {
-        dataButtons = GameObject.Find("Data Buttons");
-        dataButtons.SetActive(false);
+
         displayName.text = "Player: " + auth.GetCurrentUserDisplayName();
 
     }
@@ -33,25 +30,8 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Main scene");
-    }
 
-    public void ActivateDataMenu()
-    {
-        dataButtons = GameObject.Find("Data Buttons");
-        dataButtons.SetActive(true);
 
-        menuButtons = GameObject.Find("Menu Buttons");
-        menuButtons.SetActive(false);
-
-    }
-
-    public void ActivateGameMenu()
-    {
-        menuButtons = GameObject.Find("Menu Buttons");
-        menuButtons.SetActive(true);
-
-        dataButtons = GameObject.Find("Data Buttons");
-        dataButtons.SetActive(false);
     }
     
     public void Quiz()
@@ -63,7 +43,6 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         Quiz();
