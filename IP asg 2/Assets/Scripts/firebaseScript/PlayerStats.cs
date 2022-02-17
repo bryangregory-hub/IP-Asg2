@@ -26,7 +26,6 @@ public class PlayerStats
 
         var timestamp = this.GetTimeUnix();
         this.updateOn = timestamp;
-        this.createdOn = timestamp;
     }
 
     public long GetTimeUnix()
@@ -38,5 +37,11 @@ public class PlayerStats
     public string PlayerStatsToJson()
     {
         return JsonUtility.ToJson(this);
+    }
+
+    public string PrintPlayerStats()
+    {
+        return string.Format("Player details {0} \n Username: {1} \n Score: {2} \n Accuracy: {3}",
+            this.username, this.correct, this.accuracy);
     }
 }

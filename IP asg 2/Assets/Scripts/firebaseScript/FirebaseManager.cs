@@ -11,13 +11,17 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
+
 public class FirebaseManager : MonoBehaviour
 {
+    public AuthManager auth; 
     DatabaseReference dbPlayerStatsReference;
+    public string uuid;
 
     public void Awake()
     {
         dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
+        uuid = auth.GetCurrentUser().UserId;
     }
 
     public void UpdatePlayerStats(string uuid, int correct, int accuracy, string displayName )
@@ -45,17 +49,9 @@ public class FirebaseManager : MonoBehaviour
                 {
                     //update
                     //create temp object sp which stores info from player stats
-                    PlayerStats sp = JsonUtility.FromJson<PlayerStats>(playerStats.GetRawJsonValue());
-                    sp.updateOn = sp.GetTimeUnix();
-
-                    //update leaderboard if new highscore
-                    if (correct > sp.correct)
-                    {
-                        sp.correct = correct;
-                    }
-
+                    QuizManager sp = JsonUtility.FromJson<QuizManager>(playerStats.GetRawJsonValue());
                     //updating all player details
-                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.PlayerStatsToJson());
+                    dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.QuizManagerToJson());
                 }
                 else
                 {
@@ -91,12 +87,14 @@ public class FirebaseManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot ds = task.Result;
+                
 
                 if (ds.Child(uuid).Exists)
                 {
                     playerStats = JsonUtility.FromJson<PlayerStats>(ds.Child(uuid).GetRawJsonValue());
                     Debug.Log("ds....:" + ds.GetRawJsonValue());
                     Debug.Log("player stats values..." + playerStats.PlayerStatsToJson());
+                    Debug.Log(playerStats);
                 }
             }
         });
