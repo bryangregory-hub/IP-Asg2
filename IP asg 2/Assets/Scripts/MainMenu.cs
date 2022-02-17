@@ -12,6 +12,9 @@ public class MainMenu : MonoBehaviour
     public AuthManager auth;
     public GameObject signOut;
 
+    public GameObject gameMenu;
+    public GameObject statsMenu;
+
     public TextMeshProUGUI displayName;
 
     public void Awake()
@@ -19,6 +22,26 @@ public class MainMenu : MonoBehaviour
 
         displayName.text = "Player: " + auth.GetCurrentUserDisplayName();
 
+        statsMenu = GameObject.Find("Stats");
+        statsMenu.SetActive(false);
+
+    }
+
+    public void DisplayGameMenuButton()
+    {
+        gameMenu = GameObject.Find("Menu Buttons");
+        gameMenu.SetActive(true);
+        statsMenu = GameObject.Find("Stats");
+        statsMenu.SetActive(false);
+    }
+
+    public void DisplayStatsMenu()
+    {
+        statsMenu = GameObject.Find("Menu Buttons");
+        statsMenu.SetActive(true);
+
+        gameMenu = GameObject.Find("Stats");
+        gameMenu.SetActive(false);
     }
 
     public void SignOut()
@@ -30,8 +53,6 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Main scene");
-
-
     }
     
     public void Quiz()

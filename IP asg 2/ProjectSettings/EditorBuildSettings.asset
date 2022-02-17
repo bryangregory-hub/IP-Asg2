@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/NormalAuth.unity
     guid: f8f67bda70ab9fd47a64f142f036e3aa
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: d08fab3fcc952b34d981d35984fa49ba
-  - enabled: 1
     path: Assets/Scenes/Main scene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/Quiz.unity
     guid: 214f86b3b8922d14291fdc06f15f00d8
+  - enabled: 1
+    path: Assets/Scenes/Game Scene.unity
+    guid: 0beb616db7e86f8408b86666ff63f528
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 0c7766240d4144340a8593def618276b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fc199b9129994404c8471558e4428f27, type: 2}
