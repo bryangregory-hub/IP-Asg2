@@ -1,3 +1,12 @@
+/**
+Author: Bryan Gregory Soh
+
+Name of Class: teleport
+
+Description of Class: the purpose of this script was to allow the player to teleport with indication from a ray curve.
+
+Date Created: 5/02/2022
+**/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
