@@ -32,14 +32,12 @@ public class PlayerStatsManager : MonoBehaviour
         if (playerStats != null)
         {
             Debug.Log("playerstats.......:" + playerStats.PlayerStatsToJson());
-
             correct.text = playerStats.correct.ToString();
             accuracy.text = playerStats.accuracy.ToString();
             updatedOn.text = UnixToDateTime(playerStats.updateOn);
         }
         else
         {
-            //resetting the values of the player stats 
             ResetUI();
         }
 

@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Firebase.Database;
+using Firebase.Auth;
+using System.Threading.Tasks;
 
 public class QuizManager : MonoBehaviour
 {
     public AuthManager authMgr;
     public FirebaseManager firebaseMgr;
+    DatabaseReference dbReference;
+    FirebaseAuth auth;
 
     // variable settings
     public List<QuestionsAndAnswers> QnA;
@@ -25,8 +30,17 @@ public class QuizManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject StartPanel;
 
-    
+
     public bool isPlayerStatUpdated;
+
+    public string username;
+    public int correct;
+    public int acc;
+
+    public void Awake(){
+        auth = FirebaseAuth.DefaultInstance;
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+        }
 
     // counting question and generating steps
     private void Start()
@@ -65,9 +79,9 @@ public class QuizManager : MonoBehaviour
         isPlayerStatUpdated = true;
     }
 
-    public void UpdatePlayerStats(int score, int accuracy)
+    public void UpdatePlayerStats(int correct, int accuracy)
     {
-        firebaseMgr.UpdatePlayerStats(authMgr.GetCurrentUser().UserId, score, accuracy, authMgr.GetCurrentUserDisplayName());
+        firebaseMgr.UpdatePlayerStats(authMgr.GetCurrentUser().UserId, correct, accuracy, authMgr.GetCurrentUserDisplayName());
     }
 
     // when players answer the question correctly
@@ -127,5 +141,45 @@ public class QuizManager : MonoBehaviour
             GameOver();
         }
         
+    }
+
+    public string QuizManagerToJson()
+    {
+        return JsonUtility.ToJson(this);
+    }
+
+    public void CreateAccuracy()
+    {
+        acc = (score / questionsAnswered) * 100;
+        
+    }
+    public async Task CreateNewPlayerStats(string uuid, string username, int correct, int accuracy)
+    {
+        QuizManager quizManager = authMgr.GetCurrentUser().UserId;
+        CreateAccuracy();
+        QuizManager newQuizManager = new QuizManager(username, correct, accuracy);
+        Debug.LogFormat("Player details : {0}", newQuizManager.PrintQuizManager());
+
+        //root/player/$uuid
+        await dbReference.Child("players/" + uuid).SetRawJsonValueAsync(newQuizManager.QuizManagerToJson());
+        return;
+    }
+
+    public QuizManager( string username, int correct, int acc)
+    {
+        this.username = username;
+        this.correct = correct;
+        this.acc = acc;
+    }
+
+    public QuizManager()
+    {
+
+    }
+
+    public string PrintQuizManager()
+    {
+        return string.Format("Username: {0} \n Score: {1} \n Acc: {2}",
+             this.username, this.correct, this.acc);
     }
 }

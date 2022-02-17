@@ -163,10 +163,10 @@ public class AuthManager : MonoBehaviour
         Debug.LogFormat("Player details : {0}", newPlayer.PrintPlayer());
 
         //root/player/$uuid
-        dbReference.Child("players/" + uuid).SetRawJsonValueAsync(newPlayer.PlayerToJson());
+        await dbReference.Child("players/" + uuid).SetRawJsonValueAsync(newPlayer.PlayerToJson());
 
         // Update auth player with new display name -> tagging along username inout field
-        UpdatePlayerDisplayName(displayName);
+        await UpdatePlayerDisplayName(displayName);
     }
 
     public async Task UpdatePlayerDisplayName(string displayName)
@@ -177,7 +177,7 @@ public class AuthManager : MonoBehaviour
             {
                 DisplayName = displayName
             };
-            auth.CurrentUser.UpdateUserProfileAsync(profile).ContinueWithOnMainThread(task =>
+            await auth.CurrentUser.UpdateUserProfileAsync(profile).ContinueWithOnMainThread(task =>
             {
                 if (task.IsCanceled)
                 {
