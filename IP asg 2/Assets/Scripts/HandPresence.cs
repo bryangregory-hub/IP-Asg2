@@ -1,3 +1,12 @@
+/**
+Author: Bryan Gregory Soh
+
+Name of Class: vr hand 
+
+Description of Class: if vr headset is dected place hands on the player with animation
+
+Date Created: 12/02/2022
+**/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +39,7 @@ public class HandPresence : MonoBehaviour
     
     IEnumerator GetDevices(float delayTime)
     {
+        //due to the headset having a delay with game in play i had to make a coroutuine wait a few seconds to detect the headset.
         yield return new WaitForSeconds(delayTime);
         List<InputDevice> devices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
@@ -39,12 +49,14 @@ public class HandPresence : MonoBehaviour
         }
         if (devices.Count > 0)
         {
+            //if the vr hands are dectech hand models will spawn allowing it to animate the hands to grab and interact.
             targetDevice = devices[0];
 
             spawnedHandModel = Instantiate(handModelPrefab, transform);
             handAnimate = spawnedHandModel.GetComponent<Animator>();
         }
     }
+    //idntifty the different types of input type and controls on the hand set
     void UpdateHandAnimation()
     {
         if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerVal))

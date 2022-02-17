@@ -36,9 +36,9 @@ public class ContinuousMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //gets player rotation
+        //gets player rotation and move
         Quaternion headYaw = Quaternion.Euler(0, origin.Camera.transform.eulerAngles.y, 0);
-
+        //moves player with speed
         Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
         character.Move(direction * Time.fixedDeltaTime * Speed);
     }
