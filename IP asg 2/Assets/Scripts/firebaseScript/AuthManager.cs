@@ -1,3 +1,13 @@
+/*
+Author: Charlene Soh Jing Ying
+
+Name of Class: AuthManager
+
+Description of Class: This class deals with Authenticaton functions for both storing and checking of user validation  
+
+Date Created: 5/2/2022
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +29,7 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField nameInput;
     public TMP_InputField passwordInput;
 
-
+    // text mesh pro guis 
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI errorMeshContent;
 
@@ -52,6 +62,7 @@ public class AuthManager : MonoBehaviour
             //signing in user
             auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
              {
+                 // checking task 
                  if (task.IsCanceled)
                  {
                      string errorMsg = this.HandleSignInError(task);
@@ -61,7 +72,7 @@ public class AuthManager : MonoBehaviour
                      Debug.LogError("Sorry, signing in account was canceled");
                      return;
                  }
-
+                 // checking task 
                  else if (task.IsFaulted)
                  {
                      string errorMsg = this.HandleSignInError(task);
@@ -71,7 +82,7 @@ public class AuthManager : MonoBehaviour
                      Debug.LogError("Sorry, signing in account was faulted");
                      return;
                  }
-
+                 // checking task and running process 
                  else if (task.IsCompleted)
                  {
                      errorMeshContent.gameObject.SetActive(false);
@@ -82,6 +93,7 @@ public class AuthManager : MonoBehaviour
                  }
              });
         }
+        // error handling 
         else
         {
             errorMeshContent.text="Error in Signing in, invalid email or password";
@@ -89,6 +101,7 @@ public class AuthManager : MonoBehaviour
         }
     }
 
+    // signing up news users
     public async void SignUpNewUser()
     {
         //retrieving variable data from input fields
@@ -97,6 +110,7 @@ public class AuthManager : MonoBehaviour
 
         if (ValidateEmail(email) && ValidatePassword(password))
         {
+            // checking task 
             FirebaseUser newUser = await SignUpNewUserOnly(email, password);
             if (newUser != null)
             {
@@ -106,20 +120,21 @@ public class AuthManager : MonoBehaviour
                 await UpdatePlayerDisplayName(username);
             }
         }
-
+        // error mesh handling 
         else
         {
             errorMeshContent.text = "Error in Signing up, Invalid email or password";
             errorMeshContent.gameObject.SetActive(true);
         }
     }
-
+    // Creation of new user task
     public async Task<FirebaseUser> SignUpNewUserOnly(string email, string password)
     {
         //creating user
         FirebaseUser newUser = null;
         await auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
+            // checking task
             if (task.IsCanceled)
             {
                 if (task.Exception!=null)
@@ -132,6 +147,7 @@ public class AuthManager : MonoBehaviour
 
                 return;
             }
+            // checking task
             else if (task.IsFaulted)
             {
                 if (task.Exception != null)
@@ -143,7 +159,7 @@ public class AuthManager : MonoBehaviour
                     return;
                 }
             }
-
+            // checking task and processing 
             else if (task.IsCompleted)
             {
                 errorMeshContent.gameObject.SetActive(false);
@@ -156,7 +172,7 @@ public class AuthManager : MonoBehaviour
         return newUser;
     }
 
-
+    // creating users and storing into firebase database 
     public async Task CreateNewPlayer(string uuid, string userName, string displayName, string email)
     {
         Player newPlayer = new Player(userName, displayName, email);
@@ -169,6 +185,7 @@ public class AuthManager : MonoBehaviour
         await UpdatePlayerDisplayName(displayName);
     }
 
+    // displaying name on ui canvas 
     public async Task UpdatePlayerDisplayName(string displayName)
     {
         if(auth.CurrentUser != null)
@@ -177,6 +194,7 @@ public class AuthManager : MonoBehaviour
             {
                 DisplayName = displayName
             };
+            // auth awaiting beofre updating the profile 
             await auth.CurrentUser.UpdateUserProfileAsync(profile).ContinueWithOnMainThread(task =>
             {
                 if (task.IsCanceled)
@@ -194,16 +212,19 @@ public class AuthManager : MonoBehaviour
             });
         }
     }
+    // retrieving from firebase 
     public string GetCurrentUserDisplayName()
     {
         return auth.CurrentUser.DisplayName;
     }
-    
+
+    // retrieving from firebase 
     public FirebaseUser GetCurrentUser()
     {
         return auth.CurrentUser;
     }
 
+    // signing out of authentication 
     public void SignOut()
     {
         Debug.Log("signing out");
@@ -222,6 +243,7 @@ public class AuthManager : MonoBehaviour
         }
     }
 
+    // forgeting password button 
     public void ForgetPassword()
     {
         string email = emailInput.text.Trim();
@@ -249,6 +271,7 @@ public class AuthManager : MonoBehaviour
         });
     }
 
+    // validaitng email
     public bool ValidateEmail(string email)
     {
         bool isValid = false;
@@ -266,6 +289,7 @@ public class AuthManager : MonoBehaviour
         return isValid;
     }
 
+    // validating password
     public bool ValidatePassword(string password)
     {
         bool isValid = false;
@@ -278,7 +302,8 @@ public class AuthManager : MonoBehaviour
         return isValid;
     }
 
-    /*public bool ValidateUsername(string username)
+    // validating username 
+    public bool ValidateUsername(string username)
     {
         bool isValid = false;
         //Regex only contains letters,underscores and dots
@@ -291,7 +316,8 @@ public class AuthManager : MonoBehaviour
 
         return isValid;
     }
-    */
+    
+    // error handling 
     public string HandleSignUpError(Task<FirebaseUser> task)
     {
         string errorMsg = "";
@@ -325,6 +351,7 @@ public class AuthManager : MonoBehaviour
         return errorMsg;
     }
 
+    // error handling 
     public string HandleSignInError(Task<FirebaseUser> task)
     {
         string errorMsg = "";

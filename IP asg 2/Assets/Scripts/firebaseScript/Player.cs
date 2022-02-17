@@ -1,3 +1,13 @@
+/*
+Author: Charlene Soh Jing Ying
+
+Name of Class: Player
+
+Description of Class: This class deals with the player informations conversions and identifiers 
+
+Date Created: 5/2/2022
+*/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +18,7 @@ using Firebase.Auth;
 //properties of gameplayer and their statistics
 public class Player
 {
+    // public variables to use
     public string userName;
     public string displayName;
     public string email;
@@ -33,6 +44,7 @@ public class Player
     }
 
 
+    // unix conversion for timestamp items 
     public long GetTimeUnix()
     {
         return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();

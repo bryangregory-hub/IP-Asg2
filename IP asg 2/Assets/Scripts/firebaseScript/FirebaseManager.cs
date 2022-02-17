@@ -1,3 +1,13 @@
+/*
+Author: Charlene Soh Jing Ying
+
+Name of Class: FirebaseManager
+
+Description of Class: This class deals with the firebase storing of player statistics into the realtime database in firebase 
+
+Date Created: 5/2/2022
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,16 +24,21 @@ using System.Text.RegularExpressions;
 
 public class FirebaseManager : MonoBehaviour
 {
+    // database caling
     public AuthManager auth; 
     DatabaseReference dbPlayerStatsReference;
+
+    // public variable 
     public string uuid;
 
     public void Awake()
     {
+        // database initialising 
         dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
         uuid = auth.GetCurrentUser().UserId;
     }
 
+    // Updating playerstatistics 
     public void UpdatePlayerStats(string uuid, int correct, int accuracy, string displayName )
     {
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
@@ -31,16 +46,17 @@ public class FirebaseManager : MonoBehaviour
         //read data check entry based on uid
         playerQuery.GetValueAsync().ContinueWithOnMainThread(task =>
         {
+            // checking task
             if (task.IsCanceled)
             {
                 Debug.LogError("Task is canceled" + task.Exception);
             }
-
+            // checking task
             else if (task.IsFaulted)
             {
                 Debug.LogError("Task is faulted" + task.Exception);
             }
-
+            // checking task and completing 
             else if (task.IsCompleted)
             {
                 DataSnapshot playerStats = task.Result;
@@ -66,7 +82,7 @@ public class FirebaseManager : MonoBehaviour
     }
 
 
-    
+    // getting playerstatistics from playerstats script 
     public async Task<PlayerStats> GetPlayerStats(string uuid)
     {
         Query q = dbPlayerStatsReference.Child(uuid);
@@ -74,11 +90,12 @@ public class FirebaseManager : MonoBehaviour
 
         await dbPlayerStatsReference.GetValueAsync().ContinueWithOnMainThread(task =>
         {
+            // checking task
             if (task.IsCanceled)
             {
                 Debug.LogError("Sorry, there was an error, Error: " + task.Exception);
             }
-
+            // checking task
             else if (task.IsFaulted)
             {
                 Debug.LogError("Sorry, task was faulted, Error: " + task.Exception);
@@ -101,7 +118,7 @@ public class FirebaseManager : MonoBehaviour
         return playerStats;
     }
 
-    
+    // deleting player statistics s
     public void DeletePlayerStats(string uuid)
     {
         dbPlayerStatsReference.Child(uuid).RemoveValueAsync();

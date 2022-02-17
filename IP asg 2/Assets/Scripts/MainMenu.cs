@@ -1,3 +1,13 @@
+/*
+Author: Charlene Soh Jing Ying
+
+Name of Class: MainMenu
+
+Description of Class: This class deals with the mainmenu and the canvas 
+
+Date Created: 11/2/2022
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +18,15 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-
+    // firebase managers
     public AuthManager auth;
     public GameObject signOut;
 
+    // game object variables 
     public GameObject gameMenu;
     public GameObject statsMenu;
 
+    // text mesh pro s
     public TextMeshProUGUI displayName;
 
     public void Awake()
@@ -44,21 +56,24 @@ public class MainMenu : MonoBehaviour
         gameMenu.SetActive(false);
     }
 
+    // sign out users from game 
     public void SignOut()
     {
         auth.SignOut();
     }
+    //start game 
     public void startGAME()
     {
         SceneManager.LoadScene("Game Scene");
     }
 
-    // brings users to start playing with the AR Camera
+    // directs users to game scene 
     public void PlayGame()
     {
         SceneManager.LoadScene("Main scene");
     }
     
+    // quiz scene 
     public void Quiz()
     {
         SceneManager.LoadScene("Quiz");
