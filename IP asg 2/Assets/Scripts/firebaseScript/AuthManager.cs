@@ -77,7 +77,7 @@ public class AuthManager : MonoBehaviour
                      errorMeshContent.gameObject.SetActive(false);
                      FirebaseUser currentUser = task.Result;
                      Debug.LogFormat("User {0} signed in successfully", currentUser.UserId);
-                     SceneManager.LoadScene(1);
+                     SceneManager.LoadScene("Main scene");
                      return;
                  }
              });
@@ -217,7 +217,7 @@ public class AuthManager : MonoBehaviour
             auth.SignOut();
             if (currentSceneIndex !=0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("NormalAuth");
             }
         }
     }
