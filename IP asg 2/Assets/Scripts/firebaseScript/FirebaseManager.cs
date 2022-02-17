@@ -20,7 +20,7 @@ public class FirebaseManager : MonoBehaviour
         dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("playerStats");
     }
 
-    public void UpdatePlayerStats(string uuid, int score, int accuracy, string displayName )
+    public void UpdatePlayerStats(string uuid, int correct, int accuracy, string displayName )
     {
         Query playerQuery = dbPlayerStatsReference.Child(uuid);
 
@@ -49,9 +49,9 @@ public class FirebaseManager : MonoBehaviour
                     sp.updateOn = sp.GetTimeUnix();
 
                     //update leaderboard if new highscore
-                    if (score > sp.score)
+                    if (correct > sp.correct)
                     {
-                        sp.score = score;
+                        sp.correct = correct;
                     }
 
                     //updating all player details
@@ -60,7 +60,7 @@ public class FirebaseManager : MonoBehaviour
                 else
                 {
                     //create
-                    PlayerStats sp = new PlayerStats(displayName, score, accuracy);
+                    PlayerStats sp = new PlayerStats(displayName, correct, accuracy);
 
                     //updating multiple values
                     dbPlayerStatsReference.Child(uuid).SetRawJsonValueAsync(sp.PlayerStatsToJson());

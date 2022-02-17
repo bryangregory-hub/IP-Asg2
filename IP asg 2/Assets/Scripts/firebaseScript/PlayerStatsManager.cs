@@ -9,7 +9,7 @@ using System;
 public class PlayerStatsManager : MonoBehaviour
 {
 
-    public TextMeshProUGUI score;
+    public TextMeshProUGUI correct;
     public TextMeshProUGUI accuracy;
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI updatedOn;
@@ -33,13 +33,14 @@ public class PlayerStatsManager : MonoBehaviour
         {
             Debug.Log("playerstats.......:" + playerStats.PlayerStatsToJson());
 
-            score.text = playerStats.score.ToString();
+            correct.text = playerStats.correct.ToString();
             accuracy.text = playerStats.accuracy.ToString();
             updatedOn.text = UnixToDateTime(playerStats.updateOn);
         }
         else
         {
             //resetting the values of the player stats 
+            ResetUI();
         }
 
         playerName.text = authMgr.GetCurrentUserDisplayName();
@@ -48,7 +49,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     public void ResetUI()
     {
-        score.text = "0";
+        correct.text = "0";
         accuracy.text = "0";
         updatedOn.text = "NA";
     }

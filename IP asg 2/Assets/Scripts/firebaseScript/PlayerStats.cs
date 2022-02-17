@@ -8,21 +8,20 @@ using Firebase.Auth;
 public class PlayerStats
 {
     public string username;
-    public int score;
+    public int correct;
     public int accuracy;
     public long updateOn;
     public long createdOn;
-    public int gamesPlayed;
 
     public PlayerStats()
     { 
 
     }
 
-    public PlayerStats(string username, int score, int accuracy )
+    public PlayerStats(string username, int correct, int accuracy )
     {
         this.username = username;   
-        this.score = score;
+        this.correct = correct;
         this.accuracy = accuracy;
 
         var timestamp = this.GetTimeUnix();
