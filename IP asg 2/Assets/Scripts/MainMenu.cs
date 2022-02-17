@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
         displayName.text = "Player: " + auth.GetCurrentUserDisplayName();
 
-        statsMenu = GameObject.Find("Stats");
+        statsMenu = GameObject.Find("StatMenu Variant");
         statsMenu.SetActive(false);
 
     }
@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         gameMenu = GameObject.Find("Menu Buttons");
         gameMenu.SetActive(true);
-        statsMenu = GameObject.Find("Stats");
+        statsMenu = GameObject.Find("StatMenu Variant");
         statsMenu.SetActive(false);
     }
 
@@ -40,13 +40,17 @@ public class MainMenu : MonoBehaviour
         statsMenu = GameObject.Find("Menu Buttons");
         statsMenu.SetActive(true);
 
-        gameMenu = GameObject.Find("Stats");
+        gameMenu = GameObject.Find("StatMenu Variant");
         gameMenu.SetActive(false);
     }
 
     public void SignOut()
     {
         auth.SignOut();
+    }
+    public void startGAME()
+    {
+        SceneManager.LoadScene("Game Scene");
     }
 
     // brings users to start playing with the AR Camera
@@ -66,6 +70,9 @@ public class MainMenu : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Quiz();
+        
+            Quiz();
+        
+        
     }
 }
