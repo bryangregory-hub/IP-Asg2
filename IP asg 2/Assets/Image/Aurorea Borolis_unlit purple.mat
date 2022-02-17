@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Aurorea Borolis_unlit purple
+  m_Shader: {fileID: -6465566751694194690, guid: ef806beec9ecf30469f722ee1f8d7844, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_6d3d44a8ee40449ca40e46bc6c343b4b:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_2356657f6eb342a9bcf3154a81037dd3: 2
+    - Vector1_f6fca52ad5c44c569c8fab75f2f0d1a7: 0.69
+    - Vector1_ff684bebe03740f4af6ffed84f4d13be: 30
+    m_Colors:
+    - Color_977e4e18332b4d04a70d1a770f18d8bf: {r: 1.9999998, g: 0, b: 1.6125653, a: 1}
+    - Vector2_4f12a871ab6245b28b8728fb5657fe09: {r: 7, g: 0.1, b: 0, a: 0}
+    - Vector2_590334eb24cc4296965a239e2fe66339: {r: 0, g: -0.055, b: 0, a: 0}
+  m_BuildTextureStacks: []
