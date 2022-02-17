@@ -7,6 +7,9 @@ using TMPro;
 
 public class QuizManager : MonoBehaviour
 {
+    public AuthManager authMgr;
+    public FirebaseManager firebaseMgr;
+
     // variable settings
     public List<QuestionsAndAnswers> QnA;
     public GameObject[] options;
@@ -22,6 +25,9 @@ public class QuizManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject StartPanel;
 
+    
+    public bool isPlayerStatUpdated;
+
     // counting question and generating steps
     private void Start()
     {
@@ -29,6 +35,7 @@ public class QuizManager : MonoBehaviour
         StartPanel.SetActive(true);
         quizPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        isPlayerStatUpdated = false;
         generateQuestions();
     }
 
@@ -50,6 +57,17 @@ public class QuizManager : MonoBehaviour
         quizPanel.SetActive(false);
         GameOverPanel.SetActive(true);
         ScoreTxt.text = score + "/" + totalQuestion;
+
+        //if (!isPlayerStatUpdated)
+        //{
+        //    UpdatePlayerStats(this.score, this.accuracy);
+        //}
+        isPlayerStatUpdated = true;
+    }
+
+    public void UpdatePlayerStats(int score, int accuracy)
+    {
+        firebaseMgr.UpdatePlayerStats(authMgr.GetCurrentUser().UserId, score, accuracy, authMgr.GetCurrentUserDisplayName());
     }
 
     // when players answer the question correctly

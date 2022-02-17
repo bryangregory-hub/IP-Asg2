@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bcf08f083595e4a87a8ca48e35a891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  authMgr: {fileID: 741372116}
+  firebaseMgr: {fileID: 1304511010}
   QnA:
   - Questions: How long is a half note?
     Answers:
@@ -309,6 +311,7 @@ MonoBehaviour:
   quizPanel: {fileID: 1408407728}
   GameOverPanel: {fileID: 1653102573}
   StartPanel: {fileID: 2072087733}
+  isPlayerStatUpdated: 0
 --- !u!4 &104835118
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,6 +1778,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCorrect: 0
   quizManager: {fileID: 104835117}
+--- !u!1 &741372115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741372117}
+  - component: {fileID: 741372116}
+  m_Layer: 0
+  m_Name: Auth Mgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &741372116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741372115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e0f934ee88e2e43b035d809a0e79dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emailInput: {fileID: 0}
+  nameInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  displayName: {fileID: 0}
+  errorMeshContent: {fileID: 0}
+  signUpBtn: {fileID: 0}
+  signInBtn: {fileID: 0}
+  forgetPasswordBtn: {fileID: 0}
+  signOutBtn: {fileID: 0}
+--- !u!4 &741372117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741372115}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 303.19547, y: 219.12225, z: -5.163269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747676994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3391,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1304511009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304511011}
+  - component: {fileID: 1304511010}
+  m_Layer: 0
+  m_Name: Firebase Mgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1304511010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304511009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd448a69b33426a45842888b92cceb34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1304511011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304511009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 303.19547, y: 219.12225, z: -5.163269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1342538078
 PrefabInstance:
